@@ -1,0 +1,36 @@
+{
+  "name": "homebot-devicesa",
+  "description": "",
+  "version": "0.0.1",
+  "contributors": [],
+  "homepage": "https://github.com/homebot/homebot-devicesa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/homebot/homebot-devicesa"
+  },
+  "scripts": {
+    "test": "export NODE_ENV=test NODE_CONFIG_DIR=./src/config/ && mocha --timeout 10000 --compilers js:babel-core/register ./src/test/*.js ",
+    "populatedb": "babel-node --presets es2015 ./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./src/test/fixtures"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/homebot/homebot-devicesa/blob/master/LICENSE"
+    }
+  ],
+  "keywords": [
+    "homebot"
+  ],
+  "dependencies": {
+    "mongoose": "^5.2.9",
+    "mongoose-paginate": "^5.0.3",
+    "mqtt": "^2.18.3"
+  },
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/homebot/homebot-devicesa/issues"
+  },
+  "scripts": {},
+  "author": "",
+  "license": "MIT"
+}
