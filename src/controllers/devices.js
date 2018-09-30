@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import response from '../../../helpers/response';
-import request from '../../../helpers/request';
-import pagination from '../../../helpers/pagination';
-import mqtt from '../../../db/mqtt';
+const mongoose = require('mongoose');
+const response = require('../../../helpers/response');
+const request = require('../../../helpers/request');
+const pagination = require('../../../helpers/pagination');
+const mqtt = require('../../../db/mqtt');
 
 const Device = mongoose.model('Device');
 

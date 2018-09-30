@@ -1,4 +1,5 @@
-import config from 'config';
+//import config from 'config';
+const config = require('config')
 
 exports.getPaginationOptions = function(req) {
   const page = (req.query.page !== undefined) ? parseInt(req.query.page) : config.pagination.defaultPage;

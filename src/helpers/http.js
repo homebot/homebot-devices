@@ -1,6 +1,6 @@
-import http from 'http'
+const http = require('http');
 
-export default function (params) {
+module.exports = function (params) {
     return new Promise(function(resolve, reject) {
         let req = http.request(params, function(res) {            
             if (res.statusCode < 200 || res.statusCode >= 300) {

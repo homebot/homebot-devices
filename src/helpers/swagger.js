@@ -1,5 +1,5 @@
-import swaggerJSDoc from 'swagger-jsdoc';
-import path from 'path';
+const swaggerJSDoc = require('swagger-jsdoc');
+const path = require('path');
 
 // swagger definition
 var swaggerDefinition = {

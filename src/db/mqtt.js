@@ -1,5 +1,5 @@
-import mqtt from 'mqtt';
-import config from '../config/dev'
+const mqtt = require('mqtt');
+const config = require('../config/dev');
 
 const client = mqtt.connect({
     host: config.mqtt.host,
