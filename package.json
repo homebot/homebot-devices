@@ -1,12 +1,12 @@
 {
-  "name": "homebot-devicesa",
+  "name": "homebot-devices",
   "description": "",
   "version": "0.0.1",
   "contributors": [],
-  "homepage": "https://github.com/homebot/homebot-devicesa",
+  "homepage": "https://github.com/homebot/homebot-devices",
   "repository": {
     "type": "git",
-    "url": "https://github.com/homebot/homebot-devicesa"
+    "url": "https://github.com/homebot/homebot-devices"
   },
   "scripts": {
     "test": "export NODE_ENV=test NODE_CONFIG_DIR=./src/config/ && mocha --timeout 10000 --compilers js:babel-core/register ./src/test/*.js ",
@@ -15,7 +15,7 @@
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/homebot/homebot-devicesa/blob/master/LICENSE"
+      "url": "https://github.com/homebot/homebot-devices/blob/master/LICENSE"
     }
   ],
   "keywords": [
@@ -28,7 +28,7 @@
   },
   "devDependencies": {},
   "bugs": {
-    "url": "https://github.com/homebot/homebot-devicesa/issues"
+    "url": "https://github.com/homebot/homebot-devices/issues"
   },
   "scripts": {},
   "author": "",
