@@ -1,4 +1,3 @@
-//import config from 'config';
 const config = require('config')
 
 exports.getPaginationOptions = function(req) {

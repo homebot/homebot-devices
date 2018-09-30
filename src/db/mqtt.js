@@ -1,5 +1,5 @@
 const mqtt = require('mqtt');
-const config = require('../config/dev');
+const config = require('config');
 
 const client = mqtt.connect({
     host: config.mqtt.host,
@@ -16,4 +16,4 @@ client.on("error", error => {
     console.log("Can't connect " + error);
 });
 
-export default client;
+exports.mqtt = client;

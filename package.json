@@ -9,8 +9,8 @@
     "url": "https://github.com/homebot/homebot-devices"
   },
   "scripts": {
-    "test": "export NODE_ENV=test NODE_CONFIG_DIR=./src/config/ && mocha --timeout 10000 --compilers js:babel-core/register ./src/test/*.js ",
-    "populatedb": "babel-node --presets es2015 ./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./src/test/fixtures"
+    "test": "set NODE_ENV=test&& set NODE_CONFIG_DIR=./test/config/&& nodemon mocha --timeout 10000 --compilers ./test/index.js",
+    "populatedb": "./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./test/fixtures"
   },
   "licenses": [
     {
@@ -26,11 +26,23 @@
     "mongoose-paginate": "^5.0.3",
     "mqtt": "^2.18.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "config": "^1.31.0",
+    "morgan": "^1.8.2",
+    "express": "^4.15.3",
+    "mongoose": "^5.2.9",
+    "mqtt": "^2.18.3",
+    "populatedb": "^1.0.0",
+    "pow-mongodb-fixtures": "^0.14.0",
+    "swagger-jsdoc": "^3.0.2",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.11.0"
+  },
   "bugs": {
     "url": "https://github.com/homebot/homebot-devices/issues"
   },
-  "scripts": {},
   "author": "",
   "license": "MIT"
 }

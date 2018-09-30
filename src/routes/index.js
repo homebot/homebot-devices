@@ -1,7 +1,5 @@
 const express = require('express');
-
 const devices = require('../controllers/devices');
-//import auth = require('../../controllers/auth';
 
 const routes = express.Router({ mergeParams: true })
 

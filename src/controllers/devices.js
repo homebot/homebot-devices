@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
-const response = require('../../../helpers/response');
-const request = require('../../../helpers/request');
-const pagination = require('../../../helpers/pagination');
-const mqtt = require('../../../db/mqtt');
+const response = require('../helpers/response');
+const request = require('../helpers/request');
+const pagination = require('../helpers/pagination');
+const mqtt = require('../db/mqtt');
+
+require('../models/device');
 
 const Device = mongoose.model('Device');
 
