@@ -12,7 +12,7 @@ client.on('connect', () => {
     console.log("Connection with MQTT broker succeeded");
 });
 
-client.on("error", error => { 
+client.on("error", error => {
     console.log("Can't connect " + error);
 });
 

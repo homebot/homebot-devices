@@ -9,15 +9,13 @@
     "url": "https://github.com/homebot/homebot-devices"
   },
   "scripts": {
-    "test": "set NODE_ENV=test&& set NODE_CONFIG_DIR=./test/config/&& nodemon mocha --timeout 10000 --compilers ./test/index.js",
-    "populatedb": "./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./test/fixtures"
+    "test": "set NODE_ENV=test&& set NODE_CONFIG_DIR=./test/config/&& mocha ./test/index.js --timeout 10000",
+    "populatedb": "node ./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./test/fixtures"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/homebot/homebot-devices/blob/master/LICENSE"
-    }
-  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/homebot/homebot-devices/blob/master/LICENSE"
+  }],
   "keywords": [
     "homebot"
   ],
@@ -27,18 +25,18 @@
     "mqtt": "^2.18.3"
   },
   "devDependencies": {
-    "config": "^1.31.0",
-    "morgan": "^1.8.2",
-    "express": "^4.15.3",
-    "mongoose": "^5.2.9",
-    "mqtt": "^2.18.3",
-    "populatedb": "^1.0.0",
-    "pow-mongodb-fixtures": "^0.14.0",
-    "swagger-jsdoc": "^3.0.2",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
+    "config": "^1.31.0",
+    "express": "^4.15.3",
     "mocha": "^5.2.0",
-    "nodemon": "^1.11.0"
+    "mongoose": "^5.2.9",
+    "morgan": "^1.8.2",
+    "mqtt": "^2.18.3",
+    "nodemon": "^1.11.0",
+    "populatedb": "^1.0.0",
+    "pow-mongodb-fixtures": "^0.14.0",
+    "swagger-jsdoc": "^3.0.2"
   },
   "bugs": {
     "url": "https://github.com/homebot/homebot-devices/issues"

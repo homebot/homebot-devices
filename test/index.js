@@ -1,6 +1,3 @@
-// var mocha = require('mocha')
-// var describe = mocha.describe
-
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 
@@ -18,7 +15,9 @@ describe('Index', () => {
             chai.request(app)
                 .get('/')
                 .end((err, res) => {
-                    responseHelper.assertObject(res, { 'message': 'Ok' });
+                    responseHelper.assertObject(res, {
+                        'message': 'Ok'
+                    });
                     done();
                 });
         });
