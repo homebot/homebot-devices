@@ -4,9 +4,8 @@ const request = require('../helpers/request');
 const pagination = require('../helpers/pagination');
 const mqtt = require('../db/mqtt');
 
-require('../models/device');
-
-const Device = mongoose.model('Device');
+const Device = require('../models/device');
+require('../db/db');
 
 exports.list = async function (req, res) {
   //if (!req.currentUser.canRead(req.locals.user)) return response.sendForbidden(res);
