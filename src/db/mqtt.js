@@ -9,7 +9,7 @@ const client = mqtt.connect({
 })
 
 client.on('connect', () => {
-    console.log("Connection with MQTT broker succeeded");
+    console.log("Homebot-devices: Connection with MQTT broker succeeded");
 });
 
 client.on("error", error => {
