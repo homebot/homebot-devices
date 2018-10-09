@@ -33,19 +33,22 @@ exports.create = async function (req, res) {
 
 exports.read = async function (req, res) {
   try {
-    let device = await Device.findById(req.params.id);
-    res.json(device);
+    let device = await Device.findById(req.params.id).exec();
+    if (device) {
+      res.json(device);
+    } else {
+      response.sendNotFound(res);
+    }
   } catch (err) {
-    return response.sendNotFound(res);
+    return response.sendBadRequest(res, err);
   };
 };
 
 exports.update = async function (req, res) {
   try {
-    let device = await Device.findById(req.params.id);
-    device = await Device.findByIdAndUpdate(req.params.id, req.body, {
+    let device = await Device.findByIdAndUpdate(req.params.id, req.body, {
       new: true
-    })
+    }).exec();
     mqtt.publish('/alisa', JSON.stringify({
       deviceId: device._id,
       turn: device.payload.turn || "off"
@@ -59,11 +62,15 @@ exports.update = async function (req, res) {
 exports.delete = async function (req, res) {
   try {
     let device = await Device.findById(req.params.id);
-    await Device.findByIdAndRemove(req.params.id);
-    res.json({
-      message: 'Device successfully deleted'
-    });
+    if (device) {
+      await Device.findByIdAndRemove(req.params.id).exec();
+      res.json({
+        message: 'Device successfully deleted'
+      });
+    } else {
+      response.sendNotFound(res);
+    }
   } catch (err) {
-    return response.sendNotFound(res);
+    response.sendBadRequest(res, err);
   }
 };

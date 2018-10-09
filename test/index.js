@@ -55,6 +55,15 @@ describe('Devices', () => {
                     done();
                 });
         });
+        it('it should return 404, device is not exist', (done) => {
+            chai.request(app)
+                .get('/api/v1/devices/59b50d152d9f6b4110ec0009')
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.should.have.status(404);
+                    done();
+                });
+        });
     });
 
     describe('POST /api/v1/devices', () => {
@@ -79,4 +88,45 @@ describe('Devices', () => {
                 });
         })
     });
+
+
+    describe('DELETE /api/v1/devices/59b50d152d9f6b4110ec0000', () => {
+        it('it should delete devices and return status code 200', (done) => {
+            chai.request(app)
+                .delete('/api/v1/devices/59b50d152d9f6b4110ec0000')
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.should.have.status(200);
+                    done();
+                });
+        });
+        it('it should delete devices and return status code 200', (done) => {
+            chai.request(app)
+                .delete('/api/v1/devices/59b50d152d9f6b4110ec0001')
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.should.have.status(200);
+                    done();
+                });
+        });
+        it('it should delete devices and return status code 200', (done) => {
+            chai.request(app)
+                .delete('/api/v1/devices/59b50d152d9f6b4110ec0002')
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.should.have.status(200);
+                    done();
+                });
+        });
+        it('it return status code 404, device is not exist', (done) => {
+            chai.request(app)
+                .delete('/api/v1/devices/59b50d152d9f6b4110ec0005')
+                .end((err, res) => {
+                    should.not.exist(err);
+                    res.should.have.status(404);
+                    done();
+                });
+        });
+    });
+
 });
