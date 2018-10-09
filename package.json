@@ -9,8 +9,9 @@
     "url": "https://github.com/homebot/homebot-devices"
   },
   "scripts": {
-    "test": "set NODE_ENV=test&& set NODE_CONFIG_DIR=./test/config/&& mocha ./test/index.js --timeout 10000",
-    "populatedb": "node ./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./test/fixtures"
+    "populatedb": "node ./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-dev ./test/fixtures",
+    "populatedb-test": "node ./node_modules/pow-mongodb-fixtures/bin/mongofixtures node-express-skeleton-test ./test/fixtures",
+    "test": "npm run populatedb-test && set NODE_ENV=test&& set NODE_CONFIG_DIR=./test/config/&& mocha ./test/index.js --timeout 10000"
   },
   "licenses": [
     {

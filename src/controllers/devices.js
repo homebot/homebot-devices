@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 const response = require('../helpers/response');
 const request = require('../helpers/request');
 const pagination = require('../helpers/pagination');
-const mqtt = require('../db/mqtt');
+const {
+  mqtt
+} = require('../db/mqtt');
 
 const Device = require('../models/device');
 require('../db/db');
 
 exports.list = async function (req, res) {
-  //if (!req.currentUser.canRead(req.locals.user)) return response.sendForbidden(res);
-
   const query = Object.assign(request.getFilteringOptions(req, ['name']));
   try {
     let result = await Device.paginate(query, request.getRequestOptions(req));
@@ -21,13 +21,9 @@ exports.list = async function (req, res) {
 };
 
 exports.create = async function (req, res) {
-  // const user = req.locals.user;
-  //if (!req.currentUser.canEdit(user)) return response.sendForbidden(res);
   try {
     let device = new Device(req.body);
     device = await device.save();
-    // user.devices.push(device);
-    // await user.save();
 
     return response.sendCreated(res, device);
   } catch (err) {
@@ -37,21 +33,22 @@ exports.create = async function (req, res) {
 
 exports.read = async function (req, res) {
   try {
-    let device = await Device.findById(req.params.id);
-    //if (!req.currentUser.canRead(device)) return response.sendForbidden(res);
-    res.json(device);
+    let device = await Device.findById(req.params.id).exec();
+    if (device) {
+      res.json(device);
+    } else {
+      response.sendNotFound(res);
+    }
   } catch (err) {
-    return response.sendNotFound(res);
+    return response.sendBadRequest(res, err);
   };
 };
 
 exports.update = async function (req, res) {
   try {
-    let device = await Device.findById(req.params.id);
-    //if (!req.currentUser.canEdit(device)) return response.sendForbidden(res);
-    device = await Device.findByIdAndUpdate(req.params.id, req.body, {
+    let device = await Device.findByIdAndUpdate(req.params.id, req.body, {
       new: true
-    })
+    }).exec();
     mqtt.publish('/alisa', JSON.stringify({
       deviceId: device._id,
       turn: device.payload.turn || "off"
@@ -65,12 +62,15 @@ exports.update = async function (req, res) {
 exports.delete = async function (req, res) {
   try {
     let device = await Device.findById(req.params.id);
-    //if (!req.currentUser.canEdit(device)) return response.sendForbidden(res);
-    await Device.findByIdAndRemove(req.params.id);
-    res.json({
-      message: 'Device successfully deleted'
-    });
+    if (device) {
+      await Device.findByIdAndRemove(req.params.id).exec();
+      res.json({
+        message: 'Device successfully deleted'
+      });
+    } else {
+      response.sendNotFound(res);
+    }
   } catch (err) {
-    return response.sendNotFound(res);
+    response.sendBadRequest(res, err);
   }
 };
