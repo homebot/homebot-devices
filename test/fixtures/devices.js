@@ -10,7 +10,7 @@ exports.devices = {
       alisa_id: '937455/c72c3c5848e4ef9b61d7'
     },
     name: 'Лампочка Xiaomi YEELIGHT YLDP06YL',
-    where: '^кухн',
+    where: 'кухня',
     payload: {
       turn: 'on'
     }
@@ -23,7 +23,7 @@ exports.devices = {
       alisa_id: '997614/003251359a15b1d266be'
     },
     name: 'Лампочка Xiaomi Philips zhirui bulb light',
-    where: '^спальн',
+    where: 'спальня',
     payload: {
       turn: 'off'
     }
@@ -36,7 +36,7 @@ exports.devices = {
       alisa_id: '1030494/d3835d4938f3b3d3f6c8'
     },
     name: 'Лампочка Mixberry E27',
-    where: '^спальн',
+    where: 'спальня',
     payload: {
       turn: 'off'
     }
